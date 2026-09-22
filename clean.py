@@ -1,2 +1,5 @@
-def add(a: int, b: int) -> int:
-    return a + b
+import datetime
+
+
+def get_now():
+    return datetime.datetime.utcnow()
