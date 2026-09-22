@@ -1,0 +1,35 @@
+name: PyRift Compatibility
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  pyrift:
+    name: PyRift Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyRift
+        run: python -m pip install pyrift
+
+      - name: Run PyRift
+        run: |
+          pyrift scan . \
+            --python-min 3.10 \
+            --python-max 3.14 \
+            --runtime both \
+            --fail-on-findings
