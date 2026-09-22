@@ -24,7 +24,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install PyRift
-        run: python -m pip install pyrift
+        run: python -m pip install "git+https://github.com/BHUVANSH855/PyRift.git@6d69f61"
 
       - name: Run PyRift
         run: |
